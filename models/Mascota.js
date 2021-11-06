@@ -42,10 +42,7 @@ const MascotaSchema = new Schema({
         type: String,
         enum: pet_caracter,
         required: [true, 'El carácter de la mascota es necesario']
-    },
-    detalle: {
-        type: String
     }
 });
 
-module.exports = model('Mascota', MascotaSchema);
+//module.exports = model('Mascota', MascotaSchema);
