@@ -22,6 +22,6 @@ app.use(morgan('dev'));
 
 //Routes
 app.use('/auth', require('./routes/auth.routes'));
-app.use('/usuarios', require('./routes/usuario.routes'));
+app.use('/usuario', require('./routes/usuario.routes'));
  
 app.listen(app.get('port'), () => console.log(`Servidor corriendo en el puerto ${app.get('port')}`));

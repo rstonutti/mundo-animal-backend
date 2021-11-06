@@ -1,10 +1,18 @@
 const { model, Schema } = require('mongoose');
 
 const AdopcioneSchema = new Schema({
-    rol: {
-        type: String,
-        required: [true, 'El rol del usuario es necesario']
+    castrado: {
+        type: Boolean,
+        required: true
     },
+    vacunado: {
+        type: Boolean,
+        required: true
+    },
+    desparacitado: {
+        type: Boolean,
+        required: true
+    }
 });
 
 module.exports = model('Adopcione', AdopcioneSchema);

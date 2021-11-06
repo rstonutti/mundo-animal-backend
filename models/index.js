@@ -1,13 +1,15 @@
 const Adopcion = require('./Adopcione');
+const Busqueda = require('./Busqueda');
 const Mascota = require('./Mascota');
-const Perdido = require('./Perdido');
+const Publicacion = require('./Publicacione')
 const Rol = require('./Role');
 const Usuario = require('./Usuario');
 
 module.exports = {
     Adopcion,
+    Busqueda,
     Mascota,
-    Perdido,
+    Publicacion,
     Rol,
     Usuario
 };

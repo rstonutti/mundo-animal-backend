@@ -31,7 +31,7 @@ router.get('/:id', [
   validarCampos
 ], obtenerUsuario);
 
-router.post('/', [
+router.post('/registrar', [
   check('nombre', 'El nombre de usuario no debe estar vacío').not().isEmpty(),
   check('nombre', 'El nombre de usuario debe tener como minimo 8 caracteres').isLength({ min: 8 }),
   check('nombre').custom(existeNombre),
@@ -47,8 +47,8 @@ router.put('/:id', [
   adminRole,
   check('id', 'No es un ID válido').isMongoId(),
   check('id').custom(existeUsuarioID),
-  check('nombre', 'El nombre de usuario no debe estar vacío').not().isEmpty(),
-  check('nombre', 'El nombre de usuario debe tener como minimo 8 caracteres').isLength({ min: 8 }),
+  //check('nombre', 'El nombre de usuario no debe estar vacío').not().isEmpty(),
+  //check('nombre', 'El nombre de usuario debe tener como minimo 8 caracteres').isLength({ min: 8 }),
   check('contrasenia', 'El nombre de usuario no debe estar vacío').not().isEmpty(),
   check('contrasenia', 'El nombre de usuario debe tener como minimo 8 caracteres').isLength({ min: 8 }),
   check('correo', 'El correo no es válido').isEmail(),
