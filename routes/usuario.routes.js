@@ -1,5 +1,4 @@
 const router = require('express').Router();
-
 const { check } = require('express-validator');
 
 const {
@@ -14,7 +13,7 @@ const {
   existeNombre,
   existeRol,
   existeUsuarioID
-} = require('../helpers/validacionDB');
+} = require('../helpers/validacionesDB');
 
 const {
   validarCampos,

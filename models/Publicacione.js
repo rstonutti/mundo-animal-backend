@@ -5,7 +5,7 @@ const {
     pet_especie,
     pet_genero,
     pet_tamanio
-} = require('./Caracteristica');
+} = require('./Caracteristicas');
 
 const MascotaSchema = new Schema({
     nombre: {
@@ -13,7 +13,7 @@ const MascotaSchema = new Schema({
         required: [true, 'El nombre de la mascota es necesario']
     },
     nacimiento: {
-        type: Date  
+        type: String  
     },
     especie: {
         type: String,
@@ -46,21 +46,17 @@ const MascotaSchema = new Schema({
 });
 
 const PublicacioneSchema = new Schema({
-    //mascota: MascotaSchema,
+    mascota: MascotaSchema,
     imagen: {
         type: String,
         required: [true, 'La imagen de la publicación es necesaria']
     },
     tipo: {
-        type: Schema.Types.ObjectId,
-        required: [true, 'El tipo de publicación es necesaria'],
-        refPath: 'modelo'
-    },
-    modelo: {
         type: String,
         required: [true, 'Especificar el modelo es requerido'],
-        enum: ['Adopcione', 'Busqueda']
+        enum: ['adopcion', 'busqueda']
     },
+    detalle: {},
     descripcion: {
         type: String,
         required: [true, 'La descripción de la publicación es necesaria']
@@ -69,13 +65,18 @@ const PublicacioneSchema = new Schema({
         type: String,
         required: [true, 'El número de contacto es requerido'],
     },
-    /* autor: {
+    autor: {
         type: Schema.Types.ObjectId,
         ref: 'Usuario',
         required: true
-    }, */
+    },
+    estado:{
+        type: Boolean,
+        default: true,
+        required: true
+    },
     createdAt: {
-        type: String,
+        type: Date,
         required: true
     },
     updatedAt: {

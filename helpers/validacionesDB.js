@@ -1,7 +1,5 @@
 const { 
-    Adopcion,
-    Mascota,
-    Perdido,
+    Publicacion,
     Rol,
     Usuario } = require('../models');
 
@@ -24,7 +22,7 @@ const existeCorreo = async (correo = '') => {
 
 //Verificamos si el rol existe en la BD.
 const existeRol = async (rol = '') => {
-    const existeRol = await Role.findOne({ rol });
+    const existeRol = await Rol.findOne({ rol });
     if (!existeRol) {
         throw new Error(`El rol ${rol} no existe`);
     };
@@ -38,9 +36,9 @@ const existeUsuarioID = async (id) => {
     };
 };
 
-const existeEstudianteID = async (id) => {
-    const existeEstudiante = await Estudiante.findById(id);
-    if (!existeEstudiante) {
+const existePublicacionID = async (id) => {
+    const existePublicacion = await Publicacion.findById(id);
+    if (!existePublicacion) {
         throw new Error(`El id ${id} no existe`);
     };
 };
@@ -50,5 +48,5 @@ module.exports = {
     existeCorreo,
     existeRol,
     existeUsuarioID,
-    existeEstudianteID
+    existePublicacionID
 };

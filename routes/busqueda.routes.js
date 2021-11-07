@@ -1,4 +1,12 @@
 const router = require('express').Router();
+const { check } = require('express-validator');
+
+const {
+    validarCampos,
+    validarJWT,
+    adminRole,
+    tieneRole
+} = require('../middlewares');
 
 const {
     obtenerTodo,
@@ -8,6 +16,9 @@ const {
     eliminar
 } = require('../controllers/busqueda.controllers');
 
-router.post('/registrar', registrar)
+router.post('/registrar', [
+    validarJWT,
+    validarCampos
+], registrar)
 
 module.exports = router;

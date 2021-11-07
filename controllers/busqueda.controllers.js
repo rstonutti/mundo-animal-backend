@@ -1,5 +1,5 @@
 const { request, response } = require('express');
-const { Busqueda, Mascota, Publicacion } = require('../models');
+const { Publicacion } = require('../models');
 
 ctrlBusqueda = {};
 
@@ -12,24 +12,19 @@ ctrlBusqueda.obtener = async (req = request, res = response) => {
 };
 
 ctrlBusqueda.registrar = async (req = request, res = response) => {
-    const [publicacionInfo, busquedaInfo] = req.body;
+    const body = req.body;
 
     try {
-        
-        const busqueda = new Busqueda(busquedaInfo);
 
-        const publicacion = new Publicacion(publicacionInfo);
-        
-        publicacion.modelo = 'Busqueda';
-        
-        publicacion.tipo = busqueda._id;
-        
-        //publicacion.autor = req.usuario._id;
+        const publicacion = new Publicacion(body);
 
-        await Promise.all([
-            publicacion.save(),
-            busqueda.save()
-        ]);
+        publicacion.tipo = 'busqueda';
+
+        publicacion.createdAt = Date.now();
+
+        publicacion.autor = req.usuario._id;
+
+        await publicacion.save();
 
         res.status(201).json({
             msg: 'Publicación creada con éxito',
@@ -38,6 +33,9 @@ ctrlBusqueda.registrar = async (req = request, res = response) => {
 
     } catch (error) {
         console.log(error);
+        res.status(500).json({
+            msg: 'Por favor hablé con el administrador',
+        });
     }
 
 };

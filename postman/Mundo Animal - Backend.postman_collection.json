@@ -1,0 +1,343 @@
+{
+	"info": {
+		"_postman_id": "11fe1156-880a-48b0-ae15-b64fc6da5f3b",
+		"name": "Mundo Animal - Backend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Registrar - Usuario",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"rstonutti\",\r\n    \"contrasenia\": \"qwerty12345\",\r\n    \"correo\": \"rstonutti@gmail.com\",\r\n    \"google\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/usuario/registrar",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"usuario",
+						"registrar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login - Usuario",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"rstonutti\",\r\n    \"contrasenia\": \"qwerty12345\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/auth/login",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Mostrar todo - Adopciones",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/adopcion/listar",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"adopcion",
+						"listar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Mostrar publicación - Adopción",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/adopcion",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"adopcion"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear publicación - Adopción",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MTg1ZmVmNjIzNTM0MjhmZWYwM2IxMjgiLCJpYXQiOjE2MzYxNzE1NzUsImV4cCI6MTYzNjI1Nzk3NX0.vB0V1Ym-z4pvJQNAJAEMz_LERoiaJTvVZw3_UJhJJEs",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[{\r\n    \"imagen\": \"./img.jpg\",\r\n    \"descripcion\": \"Lo doy en adopción porque...\",\r\n    \"telefono\": \"3704047163\",\r\n    \"createdAt\": \"Hoy\"\r\n},\r\n{\r\n    \"castrado\": true,\r\n    \"vacunado\": true,\r\n    \"desparacitado\": true\r\n}]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/adopcion/registrar",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"adopcion",
+						"registrar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Editar publicación - Adopción",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/adopcion",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"adopcion"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar publicación - Adopción",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/adopcion",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"adopcion"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Mostrar todo - Búsquedas",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/busqueda/listar",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"busqueda",
+						"listar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Mostrar publicación - Búsqueda",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/busqueda/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"busqueda",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear publicación - Búsqueda",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[{\r\n    \"imagen\": \"./img.jpg\",\r\n    \"descripcion\": \"Se me perdió en...\",\r\n    \"telefono\": \"3704047163\",\r\n    \"createdAt\": \"Hoy\"\r\n},\r\n{\r\n    \"lon\": \"100.00\",\r\n    \"lat\": \"100.00\"\r\n}]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/busqueda/registrar",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"busqueda",
+						"registrar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Editar publicación - Búsqueda",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/busqueda/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"busqueda",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar publicación - Búsqueda",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/busqueda/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"busqueda",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
