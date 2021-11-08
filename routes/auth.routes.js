@@ -1,10 +1,16 @@
 const router = require('express').Router();
+const { check } = require('express-validator');
 
 const { login,
-        revalidarToken } = require('../controllers/auth.controllers');
+    googleSignIn,
+    revalidarToken } = require('../controllers/auth.controllers');
 
 router.post('/login', login);
 
-router.get('/renew', revalidarToken)
+router.post('/google', [
+    check('id_token', 'El id_token es necesario').not().isEmpty(),
+], googleSignIn);
+
+router.get('/renew', revalidarToken);
 
 module.exports = router;

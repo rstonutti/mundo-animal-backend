@@ -13,7 +13,7 @@ const MascotaSchema = new Schema({
         required: [true, 'El nombre de la mascota es necesario']
     },
     nacimiento: {
-        type: String  
+        type: String
     },
     especie: {
         type: String,
@@ -70,7 +70,7 @@ const PublicacioneSchema = new Schema({
         ref: 'Usuario',
         required: true
     },
-    estado:{
+    estado: {
         type: Boolean,
         default: true,
         required: true

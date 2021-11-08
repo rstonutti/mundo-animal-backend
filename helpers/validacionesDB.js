@@ -1,6 +1,7 @@
-const { 
+const {
     Publicacion,
     Rol,
+    Tipo,
     Usuario } = require('../models');
 
 //Verificamos si el nombre de usuario existe en mi BD.
@@ -28,6 +29,13 @@ const existeRol = async (rol = '') => {
     };
 };
 
+const existeTipo = async (tipo = '') => {
+    const existeTipo = await Tipo.findOne({ tipo });
+    if (!existeTipo) {
+        throw new Error(`El tipo ${tipo} no existe`);
+    };
+};
+
 //Verificamos si existe un usuario con ese ID.
 const existeUsuarioID = async (id) => {
     const existeUsuario = await Usuario.findById(id);
@@ -47,6 +55,7 @@ module.exports = {
     existeNombre,
     existeCorreo,
     existeRol,
+    existeTipo,
     existeUsuarioID,
     existePublicacionID
 };

@@ -6,7 +6,7 @@ const { Usuario } = require('../models');
 const ctrlUsuario = {};
 
 
-ctrlUsuario.obtenerUsuario = async ( req = request, res = response) => {
+ctrlUsuario.obtenerUsuario = async (req = request, res = response) => {
     const { id } = req.params;
     try {
         //Busco el usuario con dicho ID.
@@ -31,7 +31,7 @@ ctrlUsuario.obtenerUsuario = async ( req = request, res = response) => {
     };
 };
 
-ctrlUsuario.crearUsuario = async ( req = request, res = response) => {
+ctrlUsuario.crearUsuario = async (req = request, res = response) => {
     const { contrasenia, ...resto } = req.body;
     try {
         const usuario = new Usuario(resto);
@@ -54,7 +54,7 @@ ctrlUsuario.crearUsuario = async ( req = request, res = response) => {
     };
 };
 
-ctrlUsuario.editarUsuario = async ( req = request, res = response) => {
+ctrlUsuario.editarUsuario = async (req = request, res = response) => {
     const { id } = req.params;
     const { _id, contrasenia, nombre, ...resto } = req.body;
     try {
@@ -77,7 +77,7 @@ ctrlUsuario.editarUsuario = async ( req = request, res = response) => {
     };
 };
 
-ctrlUsuario.borrarUsuario = async ( req = request, res = response) => {
+ctrlUsuario.borrarUsuario = async (req = request, res = response) => {
     const { id } = req.params;
     try {
         //Verifico que el usuario este activo

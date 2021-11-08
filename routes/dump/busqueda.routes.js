@@ -6,7 +6,7 @@ const {
     validarJWT,
     adminRole,
     tieneRole
-} = require('../middlewares');
+} = require('../../middlewares');
 
 const {
     obtenerTodo,

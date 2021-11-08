@@ -23,7 +23,8 @@ app.use(morgan('dev'));
 //Routes
 app.use('/auth', require('./routes/auth.routes'));
 app.use('/usuario', require('./routes/usuario.routes'));
-app.use('/adopcion', require('./routes/adopcion.routes'));
-app.use('/busqueda', require('./routes/busqueda.routes'));
+//app.use('/adopcion', require('./routes/adopcion.routes'));
+//app.use('/busqueda', require('./routes/busqueda.routes'));
+app.use('/', require('./routes/publicacion.routes'));
  
 app.listen(app.get('port'), () => console.log(`Servidor corriendo en el puerto ${app.get('port')}`));

@@ -36,11 +36,11 @@ ctrlAdopcion.registrar = async (req = request, res = response) => {
 
     try {
         const publicacion = new Publicacion(body);
-        
+
         publicacion.tipo = 'adopcion';
 
         publicacion.createdAt = Date.now();
-        
+
         publicacion.autor = req.usuario._id;
 
         await publicacion.save();
@@ -66,7 +66,7 @@ ctrlAdopcion.editar = async (req = request, res = response) => {
 
     try {
         const inactivo = await Publicacion.findById(id);
-    
+
         if (!inactivo.estado) {
             return res.json({
                 msg: `La publicación ${id} no existe`
@@ -75,7 +75,7 @@ ctrlAdopcion.editar = async (req = request, res = response) => {
 
         body.usuario = req.usuario._id;
 
-        const publicacion = await Publicacion.findByIdAndUpdate(id, body, {new: true})
+        const publicacion = await Publicacion.findByIdAndUpdate(id, body, { new: true })
         res.json({
             msg: "Datos de la publicacion actualizados exitosamente",
             publicacion
@@ -91,7 +91,7 @@ ctrlAdopcion.eliminar = async (req = request, res = response) => {
     const body = req.body;
 
     try {
-        
+
     } catch (error) {
         console.log(error);
     }

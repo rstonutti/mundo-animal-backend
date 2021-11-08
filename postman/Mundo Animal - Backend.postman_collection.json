@@ -66,7 +66,13 @@
 			},
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MTg3ZTcwMTJiN2E4ZTU1MTQwYzdlMDMiLCJpYXQiOjE2MzYzMTkyMDMsImV4cCI6MTYzNjQwNTYwM30.h6KednFNTw9e23LlnGsk3lpj3ArNIYmdY1PzKIbFtOc",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "",
@@ -77,13 +83,23 @@
 					}
 				},
 				"url": {
-					"raw": "{{url}}/adopcion/listar",
+					"raw": "{{url}}/adopcion/listar?desde=0&limite=5",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
 						"adopcion",
 						"listar"
+					],
+					"query": [
+						{
+							"key": "desde",
+							"value": "0"
+						},
+						{
+							"key": "limite",
+							"value": "5"
+						}
 					]
 				}
 			},
@@ -125,13 +141,13 @@
 				"header": [
 					{
 						"key": "x-token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MTg1ZmVmNjIzNTM0MjhmZWYwM2IxMjgiLCJpYXQiOjE2MzYxNzE1NzUsImV4cCI6MTYzNjI1Nzk3NX0.vB0V1Ym-z4pvJQNAJAEMz_LERoiaJTvVZw3_UJhJJEs",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MTg3ZTcwMTJiN2E4ZTU1MTQwYzdlMDMiLCJpYXQiOjE2MzYzMTkyMDMsImV4cCI6MTYzNjQwNTYwM30.h6KednFNTw9e23LlnGsk3lpj3ArNIYmdY1PzKIbFtOc",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "[{\r\n    \"imagen\": \"./img.jpg\",\r\n    \"descripcion\": \"Lo doy en adopción porque...\",\r\n    \"telefono\": \"3704047163\",\r\n    \"createdAt\": \"Hoy\"\r\n},\r\n{\r\n    \"castrado\": true,\r\n    \"vacunado\": true,\r\n    \"desparacitado\": true\r\n}]",
+					"raw": "{\r\n    \"mascota\": {\r\n    \"nombre\": \"Chiquitín\",\r\n    \"nacimiento\": \"pa k kieres saber eso jaja saludos\",\r\n    \"especie\": \"perro\",\r\n    \"raza\": \"Yorkshire\",\r\n    \"genero\": \"macho\",\r\n    \"tamanio\": \"pequeño\",\r\n    \"color\": \"bicolor\",\r\n    \"personalidad\": \"miedoso\"\r\n},\r\n    \"imagen\": \"./img.jpg\",\r\n    \"descripcion\": \"Lo doy en adopción porque...\",\r\n    \"detalle\": {\r\n        \"castrado\": true,\r\n        \"vacunado\": true,\r\n        \"desparacitado\": true\r\n    },\r\n    \"telefono\": \"3704047163\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -205,7 +221,13 @@
 			},
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MTg3ZTcwMTJiN2E4ZTU1MTQwYzdlMDMiLCJpYXQiOjE2MzYzMTkyMDMsImV4cCI6MTYzNjQwNTYwM30.h6KednFNTw9e23LlnGsk3lpj3ArNIYmdY1PzKIbFtOc",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "",
@@ -216,13 +238,23 @@
 					}
 				},
 				"url": {
-					"raw": "{{url}}/busqueda/listar",
+					"raw": "{{url}}/busqueda/listar?desde=0&limite=5",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
 						"busqueda",
 						"listar"
+					],
+					"query": [
+						{
+							"key": "desde",
+							"value": "0"
+						},
+						{
+							"key": "limite",
+							"value": "5"
+						}
 					]
 				}
 			},
@@ -262,10 +294,16 @@
 			"name": "Crear publicación - Búsqueda",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MTg3ZTcwMTJiN2E4ZTU1MTQwYzdlMDMiLCJpYXQiOjE2MzYzMTkyMDMsImV4cCI6MTYzNjQwNTYwM30.h6KednFNTw9e23LlnGsk3lpj3ArNIYmdY1PzKIbFtOc",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
-					"raw": "[{\r\n    \"imagen\": \"./img.jpg\",\r\n    \"descripcion\": \"Se me perdió en...\",\r\n    \"telefono\": \"3704047163\",\r\n    \"createdAt\": \"Hoy\"\r\n},\r\n{\r\n    \"lon\": \"100.00\",\r\n    \"lat\": \"100.00\"\r\n}]",
+					"raw": "{\r\n    \"mascota\": {\r\n    \"nombre\": \"Chiquitín\",\r\n    \"nacimiento\": \"pa k kieres saber eso jaja saludos\",\r\n    \"especie\": \"perro\",\r\n    \"raza\": \"Yorkshire\",\r\n    \"genero\": \"macho\",\r\n    \"tamanio\": \"pequeño\",\r\n    \"color\": \"bicolor\",\r\n    \"personalidad\": \"miedoso\"\r\n    },\r\n    \"imagen\": \"./img.jpg\",\r\n    \"descripcion\": \"Se me perdió en...\",\r\n    \"detalle\": {\r\n        \"lon\": \"100.00\",\r\n        \"lat\": \"100.00\"\r\n    },\r\n    \"telefono\": \"3704047163\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"

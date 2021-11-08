@@ -13,61 +13,50 @@ const {
     registrar,
     editar,
     eliminar
-} = require('../controllers/adopcion.controllers');
+} = require('../controllers/publicacion.controllers');
 
 const {
-    existeRol,
     existePublicacionID
 } = require('../helpers/validacionesDB.js');
 
-router.get('/', [
+router.get('/:tipo/listar', [
     validarJWT,
     tieneRole('admin_role', 'collaboration_role', 'user_role'),
-    check('id', 'No es un ID válido').isMongoId(),
 
-
-    check('rol').custom(existeRol),
     validarCampos
 ], obtenerTodo);
 
-router.get('/:id', [
+router.get('/:tipo/:id', [
     validarJWT,
     tieneRole('admin_role', 'collaboration_role', 'user_role'),
     check('id', 'No es un ID válido').isMongoId(),
 
-
-    check('rol').custom(existeRol),
     validarCampos
 ], obtener);
 
-router.post('/registrar', [
+router.post('/:tipo/registrar', [
     validarJWT,
     tieneRole('admin_role', 'collaboration_role', 'user_role'),
 
-
-    check('rol').custom(existeRol),
     validarCampos
 ], registrar);
 
-router.put('/:id', [
+router.put('/:tipo/:id', [
     validarJWT,
     tieneRole('admin_role', 'collaboration_role', 'user_role'),
     check('id', 'No es un ID válido').isMongoId(),
 
 
-    check('id').custom( existePublicacionID ),
-    check('rol').custom(existeRol),
+    check('id').custom(existePublicacionID),
     validarCampos
 ], editar);
 
-router.delete('/:id', [
+router.delete('/:tipo/:id', [
     validarJWT,
     tieneRole('admin_role', 'collaboration_role', 'user_role'),
     check('id', 'No es un ID válido').isMongoId(),
 
-
-    check('id').custom( existePublicacionID ),
-    check('rol').custom(existeRol),
+    check('id').custom(existePublicacionID),
     validarCampos
 ], eliminar);
 

@@ -1,5 +1,5 @@
 const { request, response } = require('express');
-const { Publicacion } = require('../models');
+const { Publicacion } = require('../../models');
 
 ctrlBusqueda = {};
 

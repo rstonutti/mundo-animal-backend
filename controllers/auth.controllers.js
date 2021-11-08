@@ -52,12 +52,23 @@ const login = async (req = request, res = response) => {
 
 };
 
-const revalidarToken = async( req = request, res = response ) => {
-    
+//Under construction
+const googleSignIn = (req = request, res = response) => {
+
+    const { id_token } = req.body;
+
+    res.json({
+        msg: 'Todo ok, Google'
+    });
+
+};
+
+const revalidarToken = async (req = request, res = response) => {
+
     const uid = req.usuario._id;
 
     const token = await generarJWT(uid);
-    
+
     res.json({
         ok: true,
         token
@@ -66,5 +77,6 @@ const revalidarToken = async( req = request, res = response ) => {
 
 module.exports = {
     login,
+    googleSignIn,
     revalidarToken
 };
