@@ -20,8 +20,6 @@ const {
 } = require('../helpers/validacionesDB.js');
 
 router.get('/:tipo/listar', [
-    validarJWT,
-    tieneRole('admin_role', 'collaboration_role', 'user_role'),
 
     validarCampos
 ], obtenerTodo);
