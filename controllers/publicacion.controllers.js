@@ -1,3 +1,5 @@
+const path = require('path');
+
 const { request, response } = require('express');
 const { Publicacion } = require('../models');
 
@@ -52,6 +54,31 @@ ctrlPublicacion.registrar = async (req = request, res = response) => {
     const body = req.body;
 
     try {
+
+/*         if(!req.files || Object.keys(req.files).length === 0 || !req.files.imagen){
+            res.status(400).json({
+                msg: 'No hay imagenes que subir'
+            });
+            return;
+        }
+
+        const {imagen} = req.files;
+
+        const uploadPath = path.join(__dirname + '../uploads', imagen.name);
+
+        imagen.mv(uploadPath, (err) => {
+            if(err){
+                return res.status(500).json({err});
+            };
+
+            res.json({
+                msg: 'El archivo se subió'
+            })
+        }); */
+
+
+
+
 
         const publicacion = new Publicacion(body);
 

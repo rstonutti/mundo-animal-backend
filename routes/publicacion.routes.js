@@ -16,17 +16,19 @@ const {
 } = require('../controllers/publicacion.controllers');
 
 const {
-    existePublicacionID
+    existePublicacionID,
+    existeTipo
 } = require('../helpers/validacionesDB.js');
 
 router.get('/:tipo/listar', [
 
+    check('tipo').custom(existeTipo),
     validarCampos
 ], obtenerTodo);
 
 router.get('/:tipo/:id', [
-    validarJWT,
-    tieneRole('admin_role', 'collaboration_role', 'user_role'),
+    
+
     check('id', 'No es un ID válido').isMongoId(),
 
     validarCampos
@@ -36,6 +38,8 @@ router.post('/:tipo/registrar', [
     validarJWT,
     tieneRole('admin_role', 'collaboration_role', 'user_role'),
 
+    check('tipo').custom(existeTipo),
+
     validarCampos
 ], registrar);
 
@@ -43,6 +47,8 @@ router.put('/:tipo/:id', [
     validarJWT,
     tieneRole('admin_role', 'collaboration_role', 'user_role'),
     check('id', 'No es un ID válido').isMongoId(),
+
+    check('tipo').custom(existeTipo),
 
 
     check('id').custom(existePublicacionID),
@@ -53,6 +59,8 @@ router.delete('/:tipo/:id', [
     validarJWT,
     tieneRole('admin_role', 'collaboration_role', 'user_role'),
     check('id', 'No es un ID válido').isMongoId(),
+
+    check('tipo').custom(existeTipo),
 
     check('id').custom(existePublicacionID),
     validarCampos

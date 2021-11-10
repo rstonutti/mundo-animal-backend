@@ -1,6 +1,7 @@
 const cors = require('cors');
 const express = require('express');
 const morgan = require('morgan');
+const fileUpload = require('express-fileupload');
 
 require('dotenv').config();
 
@@ -16,6 +17,11 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(morgan('dev'));
+app.use(fileUpload({
+    useTempFiles : true,
+    tempFileDir : '/tmp/',
+    createParentPath: true
+}));
 
 //Settings
 (app.set('port', process.env.PORT || 8080));
@@ -26,5 +32,6 @@ app.use('/usuario', require('./routes/usuario.routes'));
 //app.use('/adopcion', require('./routes/adopcion.routes'));
 //app.use('/busqueda', require('./routes/busqueda.routes'));
 app.use('/', require('./routes/publicacion.routes'));
+app.use('/', require('./routes/uploads.routes'));
  
 app.listen(app.get('port'), () => console.log(`Servidor corriendo en el puerto ${app.get('port')}`));

@@ -2,13 +2,15 @@
 //y nos ahorramos un poco más de código
 
 const validarCampos = require('../middlewares/validarCampos.js');
-const validarJWT = require('../middlewares/validarJWT.js');
-const validarRoles = require('../middlewares/validarRoles.js');
+const validarJWT    = require('../middlewares/validarJWT.js');
+const validarRoles  = require('../middlewares/validarRoles.js');
+const validarImagen = require('../middlewares/validarImagen')
 
 //Utilizamos el spread porque entonces se exporta todo lo que venga de cada archivo.
 
 module.exports = {
     ...validarCampos,
     ...validarJWT,
-    ...validarRoles
+    ...validarRoles,
+    ...validarImagen
 };
