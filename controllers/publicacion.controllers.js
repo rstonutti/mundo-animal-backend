@@ -31,7 +31,7 @@ ctrlPublicacion.obtenerTodo = async (req = request, res = response) => {
         res.status(500).json({
             msg: 'Por favor hable con el administrador'
         });
-    }
+    };
 };
 
 ctrlPublicacion.obtener = async (req = request, res = response) => {
