@@ -39,6 +39,7 @@ const login = async (req = request, res = response) => {
         const token = await generarJWT(usuario.id);
 
         res.json({
+            ok: true,
             msg: 'Inicio de sesión exitoso',
             usuario,
             token
@@ -46,6 +47,7 @@ const login = async (req = request, res = response) => {
 
     } catch (error) {
         return res.status(500).json({
+            ok: false,
             msg: 'Error al iniciar sesión'
         })
     };

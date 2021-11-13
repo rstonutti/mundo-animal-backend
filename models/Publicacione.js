@@ -53,7 +53,7 @@ const PublicacioneSchema = new Schema({
     },
     tipo: {
         type: String,
-        required: [true, 'Especificar el modelo es requerido'],
+        required: [true, 'Especificar el tipo es requerido'],
         enum: ['adopcion', 'busqueda']
     },
     detalle: {},
