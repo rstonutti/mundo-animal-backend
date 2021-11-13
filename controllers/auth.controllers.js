@@ -1,8 +1,9 @@
 const bcryptjs = require('bcryptjs');
 const { request, response } = require('express');
 
-const { Usuario } = require('../models');
 const { generarJWT } = require('../helpers/generarJWT');
+
+const { Usuario } = require('../models');
 
 //Controlador para logearse
 const login = async (req = request, res = response) => {

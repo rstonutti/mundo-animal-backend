@@ -1,6 +1,8 @@
 const bcryptjs = require('bcryptjs');
 const { request, response } = require('express');
 
+const { generarJWT } = require('../helpers/generarJWT');
+
 const { Usuario } = require('../models');
 
 const ctrlUsuario = {};
@@ -33,6 +35,7 @@ ctrlUsuario.obtenerUsuario = async (req = request, res = response) => {
 
 ctrlUsuario.crearUsuario = async (req = request, res = response) => {
     const { contrasenia, ...resto } = req.body;
+    console.log(resto);
     try {
         const usuario = new Usuario(resto);
         //Encriptar contraseña
