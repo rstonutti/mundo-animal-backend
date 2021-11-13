@@ -67,13 +67,13 @@ const googleSignIn = (req = request, res = response) => {
 
 const revalidarToken = async (req = request, res = response) => {
 
-    const {uid, nombre} = req;
+    const {_id, nombre} = req.usuario;
 
-    const token = await generarJWT(uid);
+    const token = await generarJWT(_id);
 
     res.json({
         ok: true,
-        uid,
+        _id,
         nombre,
         token
     })
