@@ -39,10 +39,14 @@ ctrlUsuario.crearUsuario = async (req = request, res = response) => {
         const salt = bcryptjs.genSaltSync();
         usuario.contrasenia = bcryptjs.hashSync(contrasenia, salt);
         //Guardar usuario en db
-        await usuario.save();
+        const usuarioCreado = await usuario.save();
+
+        const token = await generarJWT(usuarioCreado.id);
+
         res.status(201).json({
             ok: true,
             msg: 'Usuario agregado exitosamente',
+            token,
             usuario
         });
     } catch (error) {
