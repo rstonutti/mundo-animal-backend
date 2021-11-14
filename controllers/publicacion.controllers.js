@@ -41,11 +41,13 @@ ctrlPublicacion.obtener = async (req = request, res = response) => {
     try {
         const publicacion = await Publicacion.findById(id).populate('autor', 'nombre');
         res.status(200).json({
+            ok: true,
             publicacion
         });
     } catch (error) {
         console.log('Error al mostrar las publicaciones: ', error);
         res.status(500).json({
+            ok: false,
             msg: 'Por favor hable con el administrador'
         });
     }
@@ -93,6 +95,7 @@ ctrlPublicacion.registrar = async (req = request, res = response) => {
         await publicacion.save();
 
         res.status(201).json({
+            ok: true,
             msg: 'La publicación fue creada con éxito',
             publicacion
         });
@@ -100,6 +103,7 @@ ctrlPublicacion.registrar = async (req = request, res = response) => {
     } catch (error) {
         console.log('Error al registrar la publicación', error);
         res.status(500).json({
+            ok: false,
             msg: 'Por favor hable con el administrador'
         });
     }
@@ -116,6 +120,7 @@ ctrlPublicacion.editar = async (req = request, res = response) => {
 
         if (!inactivo.estado) {
             return res.json({
+                ok: false,
                 msg: `La publicación con ${id} no existe`
             });
         };
@@ -125,12 +130,14 @@ ctrlPublicacion.editar = async (req = request, res = response) => {
         const publicacion = await Publicacion.findByIdAndUpdate(id, body, { new: true });
 
         res.status(200).json({
+            ok: true,
             msg: "Los datos de la publicación actualizados exitosamente",
             publicacion
         });
     } catch (error) {
         console.log('Error al editar la publicación', error);
         res.status(500).json({
+            ok: false,
             msg: 'Por favor hable con el administrador'
         });
     }
@@ -146,6 +153,7 @@ ctrlPublicacion.eliminar = async (req = request, res = response) => {
         const publicacion = await Publicacion.findByIdAndUpdate(id, body, { new: true });
 
         res.status(200).json({
+            ok: true,
             msg: 'La publicación fue elimnada con éxito',
             publicacion
         })
@@ -153,6 +161,7 @@ ctrlPublicacion.eliminar = async (req = request, res = response) => {
     } catch (error) {
         console.log('Error al eliminar la publicación', error);
         res.status(500).json({
+            ok: false,
             msg: 'Por favor hable con el administrador'
         });
     }
