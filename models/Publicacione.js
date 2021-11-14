@@ -85,4 +85,10 @@ const PublicacioneSchema = new Schema({
     }
 });
 
+PublicacioneSchema.methods.toJSON = function () {
+    const { __v, _id, ...publicacion } = this.toObject();
+    publicacion.uid = _id;
+    return publicacion;
+};
+
 module.exports = model('Publicacione', PublicacioneSchema);
