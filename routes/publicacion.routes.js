@@ -26,7 +26,7 @@ router.get('/:tipo/listar', [
     validarCampos
 ], obtenerTodo);
 
-router.get('/:tipo/:id', [
+router.get('/:id', [
     
 
     check('id', 'No es un ID válido').isMongoId(),
