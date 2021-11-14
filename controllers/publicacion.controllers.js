@@ -23,12 +23,14 @@ ctrlPublicacion.obtenerTodo = async (req = request, res = response) => {
         ]);
 
         res.status(200).json({
+            ok: true,
             total,
             publicaciones
         });
     } catch (error) {
         console.log(error);
         res.status(500).json({
+            ok: false,
             msg: 'Por favor hable con el administrador'
         });
     };
