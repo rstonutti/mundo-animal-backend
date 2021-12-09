@@ -12,9 +12,13 @@ const ctrlImagen = {};
 
 ctrlImagen.subir = async (req = request, res = response) => {
 
+    console.log( req.body );
+
     const { tempFilePath } = req.files.imagen;
     
     const nombre = uuidv4();
+
+    console.log(tempFilePath);
 
     console.log(nombre);
     try {
@@ -30,12 +34,14 @@ ctrlImagen.subir = async (req = request, res = response) => {
 
 
         res.json({
+            ok: true,
             secure_url,
             public_id
         });
 
     } catch (msg) {
         res.status(400).json({
+            ok:false,
             msg
         });
     };
