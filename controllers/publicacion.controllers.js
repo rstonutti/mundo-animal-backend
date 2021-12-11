@@ -10,8 +10,8 @@ ctrlPublicacion.obtenerTodo = async (req = request, res = response) => {
     const { limite = 5, desde = 0 } = req.query;
     const query = { tipo, estado: true };
 
-    console.log(1,desde);
-    console.log(2,limite);
+    console.log(1, desde);
+    console.log(2, limite);
 
     try {
         const [total, publicaciones] = await Promise.all([
@@ -26,6 +26,40 @@ ctrlPublicacion.obtenerTodo = async (req = request, res = response) => {
             ok: true,
             total,
             publicaciones
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            ok: false,
+            msg: 'Por favor hable con el administrador'
+        });
+    };
+};
+
+ctrlPublicacion.obtenerFinalizado = async (req = request, res = response) => {
+    const { limite = 5, desde = 0 } = req.query;
+    const adopciones = { tipo: 'adopcion', estado: false };
+    const busquedas = { tipo: 'busqueda', estado: false };
+
+    console.log(1, desde);
+    console.log(2, limite);
+
+    try {
+        const [adopcion, busqueda] = await Promise.all([
+            Publicacion.find(adopciones)
+                .populate('autor', 'nombre')
+                .skip(Number(desde))
+                .limit(Number(limite)),
+            Publicacion.find(busquedas)
+                .populate('autor', 'nombre')
+                .skip(Number(desde))
+                .limit(Number(limite)),
+        ]);
+
+        res.status(200).json({
+            ok: true,
+            adopcion,
+            busqueda
         });
     } catch (error) {
         console.log(error);
@@ -59,26 +93,26 @@ ctrlPublicacion.registrar = async (req = request, res = response) => {
 
     try {
 
-/*         if(!req.files || Object.keys(req.files).length === 0 || !req.files.imagen){
-            res.status(400).json({
-                msg: 'No hay imagenes que subir'
-            });
-            return;
-        }
-
-        const {imagen} = req.files;
-
-        const uploadPath = path.join(__dirname + '../uploads', imagen.name);
-
-        imagen.mv(uploadPath, (err) => {
-            if(err){
-                return res.status(500).json({err});
-            };
-
-            res.json({
-                msg: 'El archivo se subió'
-            })
-        }); */
+        /*         if(!req.files || Object.keys(req.files).length === 0 || !req.files.imagen){
+                    res.status(400).json({
+                        msg: 'No hay imagenes que subir'
+                    });
+                    return;
+                }
+        
+                const {imagen} = req.files;
+        
+                const uploadPath = path.join(__dirname + '../uploads', imagen.name);
+        
+                imagen.mv(uploadPath, (err) => {
+                    if(err){
+                        return res.status(500).json({err});
+                    };
+        
+                    res.json({
+                        msg: 'El archivo se subió'
+                    })
+                }); */
 
 
 
@@ -89,9 +123,9 @@ ctrlPublicacion.registrar = async (req = request, res = response) => {
         publicacion.tipo = tipo;
 
         publicacion.autor = req.usuario._id;
-        
+
         publicacion.createdAt = Date.now();
-        
+
         await publicacion.save();
 
         res.status(201).json({

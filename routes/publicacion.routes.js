@@ -9,6 +9,7 @@ const {
 
 const {
     obtenerTodo,
+    obtenerFinalizado,
     obtener,
     registrar,
     editar,
@@ -26,8 +27,12 @@ router.get('/:tipo/listar', [
     validarCampos
 ], obtenerTodo);
 
+router.get('/finalizado', [
+    validarCampos
+], obtenerFinalizado);
+
 router.get('/:id', [
-    
+
 
     check('id', 'No es un ID válido').isMongoId(),
 
